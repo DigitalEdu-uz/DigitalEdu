@@ -12,22 +12,20 @@
         <li class="nav-item dropdown active">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
           <ul class="dropdown-menu" aria-labelledby="dropdown01">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            {% if view.category|length > 0 %}
+
+              {% for el in view.category %}
+              <li><a class="dropdown-item" href="{{ el.get_absolute_url }}">{{ el.name }}</a></li>
+              {% endfor %}
+
+              {% else %}
+              <li><a class="dropdown-item" href="#">No categories</a></li>
+            {% endif %}
           </ul>
         </li>
       </ul>
           <form>
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-            <span class="header-search-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="21.759" height="22.699" viewBox="0 0 21.759 22.699">
-                                    <g id="forge-icon" transform="translate(1.5 1.5)">
-                                        <circle id="Ellipse_1" data-name="Ellipse 1" cx="6.996" cy="6.996" r="6.996" fill="none" stroke="#aaa" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></circle>
-                                        <line id="Line_1" data-name="Line 1" x2="6.401" y2="6.942" transform="translate(11.739 12.137)" fill="none" stroke="#aaa" stroke-linecap="round" stroke-width="3"></line>
-                                    </g>
-                                </svg>
-                            </span>
+          <input class="form-control" type="text" placeholder="Qidirish 🔍" aria-label="Qidirish 🔍">
           </form>
     </div>
   </div>

@@ -1,57 +1,59 @@
 <!doctype html>
 <html lang="en">
 {% load static %}
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content='"Mirzakhidov Education" online platform'>
-    <meta name="author" content="Mirzakhidov Mirsaid">
-    <title>{{title}}</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content='"Mirzakhidov Education" online platform'>
+  <meta name="author" content="Mirzakhidov Mirsaid">
+  <title>{{title}}</title>
 
-    
 
-    <!-- Bootstrap core CSS -->
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <link rel="shortcut icon" href="{% static 'main/favicon/favicon.ico' %}" type="image/x-icon">
+  <!-- Bootstrap core CSS -->
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+  <link rel="shortcut icon" href="{% static 'main/favicon/favicon.ico' %}" type="image/x-icon">
+
+  <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
-    <!-- Custom styles for this template -->
-    <link href="{% static 'main/style.css' %}" rel="stylesheet">
-  </head>
-  <body>
-    
-{% include "include/header.html" %}
-
-<main class="container">
-  <h1 data-aos="fade-in" class="aos-init aos-animate">Biz bilan online bilim oling!</h1>
-
-  <div class="starter-template text-center py-5 px-3">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-  </div>
+    }
+  </style>
 
 
-<div class="container">
-  <hr>
-<h1>Recomended</h1>
+  <!-- Custom styles for this template -->
+  <link href="{% static 'main/style.css' %}" rel="stylesheet">
+</head>
+<body>
+
+  {% include "include/header.html" %}
+
+  <main class="container">
+    <h1 data-aos="fade-in" class="aos-init aos-animate">Biz bilan online bilim oling!</h1>
+
+    <div class="starter-template text-center py-5 px-3">
+      <h1>Bootstrap starter template</h1>
+      <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+    </div>
+
+
+    <div class="container">
+      <hr>
+      <h1>Recomended</h1>
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
@@ -105,46 +107,70 @@
       </div>
     </div>
 
-<div class="container py-5">
-<hr>
-<h1>All</h1>
+    <div class="container py-5">
+      <hr>
+      <h1>All</h1>
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-  {% if course_list|length > 0 %}
+        {% if course_list|length > 0 %}
 
-      {% for el in course_list %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        {% for el in course_list %}
+            <div class="col">
+              <div class="card shadow-sm">
+                <!-- <img src="{% static 'media/' %}{{ el.image }}" alt="{{ el.title }}" class="bd-placeholder-img card-img-top"> -->
 
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <video
+                id="my-video"
+                class="video-js"
+                controls
+                preload="auto"
+                width="354"
+                height="264"
+                poster="{% static 'media/' %}{{ el.image }}"
+                data-setup="{}"
+                class="bd-placeholder-img card-img-top"
+                >
+                <source src="{% static 'media/' %}{{ el.content }}" type="video/mp4" />
+                <!-- <source src="MY_VIDEO.webm" type="video/webm" /> -->
+                <p class="vjs-no-js">
+                  To view this video please enable JavaScript, and consider upgrading to a
+                  web browser that
+                  <a href="https://videojs.com/html5-video-support/" target="_blank"
+                  >supports HTML5 video</a
+                  >
+                </p>
+              </video>
+
+              <div class="card-body">
+                <p class="card-text">{{ el.title }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-muted">{{ el.created_at|timesince }} ago</small>
                 </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
-        </div>
-        {% endfor %}
+      {% endfor %}
 
       {% else %}
-          <div class="col-lg-12">
-              <h1 class="font-weight-bold">No posts</h1>
-          </div>
-      {% endif %}
+      <div class="col-lg-12">
+        <h1 class="font-weight-bold">No posts</h1>
       </div>
+      {% endif %}
     </div>
+  </div>
 
 </main><!-- /.container -->
 
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
-      
-  </body>
+<script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+
+
+</body>
 </html>
