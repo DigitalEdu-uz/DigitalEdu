@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Corben:wght@700&display=swap');
+
+body {
+  padding-top: 5rem;
+}
+
+li {
+    position: relative;
+    white-space: nowrap;
+    /*padding: 18px 15px;*/
+    margin-left: 5px;
+    transition: 0.3s;
+}
+.nav-item.active{
+	background: #cc1616;
+}
+.nav-item:hover{
+	background: #cc1616;
+}
+.nav-link{
+	color: #FFFFFF !important;
+}
+
+.navbar-brand{
+	/*font-family: 'Permanent Marker', cursive;*/
+	font-family: 'Corben', cursive;
+	font-size: 2rem;
+}
+.text-danger{
+	margin: 0;
+}
